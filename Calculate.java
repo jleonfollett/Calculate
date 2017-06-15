@@ -11,10 +11,13 @@ public class Calculate {
 	static String numberOne = "";
 	String numberTwo = "";
 	String answer;
-	String stringState = "Before";
+	STATE stringState = STATE.BEFORE;
 	OPERATION intState;
 	public enum OPERATION {
 		ADD, SUBTRACT, MULTIPLY, DIVIDE;
+	}
+	public enum STATE {
+		BEFORE, AFTER;
 	}
 	
 	public static void main(String[] args){
@@ -141,7 +144,7 @@ public class Calculate {
 			public void actionPerformed(ActionEvent e){
 					jlbOutput.setText("0");
 					intState = OPERATION.ADD;
-					stringState = "after";
+					stringState = STATE.AFTER;
 			}
 			}
 		);
@@ -149,7 +152,7 @@ public class Calculate {
 			public void actionPerformed(ActionEvent e){
 				jlbOutput.setText("0");
 				intState = OPERATION.SUBTRACT;
-					stringState = "after";
+					stringState = STATE.AFTER;
 			}
 			}
 		);
@@ -157,7 +160,7 @@ public class Calculate {
 			public void actionPerformed(ActionEvent e){
 				jlbOutput.setText("0");
 					intState = OPERATION.MULTIPLY;
-					stringState = "after";
+					stringState = STATE.AFTER;
 			}
 			}
 		);
@@ -165,7 +168,7 @@ public class Calculate {
 			public void actionPerformed(ActionEvent e){
 				jlbOutput.setText("0");
 					intState = OPERATION.DIVIDE;
-					stringState = "after";
+					stringState = STATE.AFTER;
 			}
 			}
 		);
@@ -174,7 +177,7 @@ public class Calculate {
 					numberOne = "";
 					numberTwo = "";
 					jlbOutput.setText("0");
-					stringState = "Before";
+					stringState = STATE.BEFORE;
 			}
 			}
 		);
@@ -190,7 +193,7 @@ public class Calculate {
 		}
 		
 	public void setOutput(JLabel output){
-		if (stringState.equals("Before")){
+		if (stringState.equals(STATE.BEFORE)){
 			output.setText(numberOne);
 			
 		}
@@ -216,7 +219,7 @@ public class Calculate {
 			int sum = firstNumb + secondNumb;
 			numberOne = Integer.toString(sum);
 			numberTwo = "";
-			stringState = "Before";
+			stringState = STATE.BEFORE;
 			setOutput(output);
 		}
 		else if (intState == OPERATION.SUBTRACT){
@@ -225,7 +228,7 @@ public class Calculate {
 			int sub = firstNumb - secondNumb;
 			numberOne = Integer.toString(sub);
 			numberTwo = "";
-			stringState = "Before";
+			stringState = STATE.BEFORE;
 			setOutput(output);
 		}
 		else if (intState == OPERATION.MULTIPLY){
@@ -234,7 +237,7 @@ public class Calculate {
 			int mul = firstNumb * secondNumb;
 			numberOne = Integer.toString(mul);
 			numberTwo = "";
-			stringState = "Before";
+			stringState = STATE.BEFORE
 			setOutput(output);
 		}
 		else if (intState == OPERATION.DIVIDE){
@@ -243,7 +246,7 @@ public class Calculate {
 			int div = firstNumb / secondNumb;
 			numberOne = Integer.toString(div);
 			numberTwo = "";
-			stringState = "Before";
+			stringState = STATE.BEFORE;
 			setOutput(output);
 		}
 	}
